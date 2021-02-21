@@ -8,9 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.upgrad.quora.api.model.*;
 import com.upgrad.quora.service.business.AnswerService;
@@ -19,6 +21,9 @@ import com.upgrad.quora.service.exception.AnswerNotFoundException;
 import com.upgrad.quora.service.exception.AuthorizationFailedException;
 import com.upgrad.quora.service.exception.InvalidQuestionException;
 
+
+@RestController
+@RequestMapping("/")
 public class AnswerController {
 	 @Autowired private AnswerService answerService;
 
@@ -40,7 +45,7 @@ public class AnswerController {
 	  public ResponseEntity<AnswerResponse> createAnswer(
 	      @RequestHeader("authorization") final String accessToken,
 	      @PathVariable("questionId") final String questionId,
-	      AnswerRequest answerRequest)
+	      @RequestBody AnswerRequest answerRequest)
 	      throws AuthorizationFailedException, InvalidQuestionException {
 	    AnswerEntity answerEntity = new AnswerEntity();
 	    answerEntity.setAnswer(answerRequest.getAnswer());
@@ -69,7 +74,7 @@ public class AnswerController {
 	  public ResponseEntity<AnswerEditResponse> editAnswer(
 	      @RequestHeader("authorization") final String accessToken,
 	      @PathVariable("answerId") final String answerId,
-	      AnswerEditRequest answerEditRequest)
+	      @RequestBody AnswerEditRequest answerEditRequest)
 	      throws AuthorizationFailedException, AnswerNotFoundException {
 	    AnswerEditResponse answerEditResponse = new AnswerEditResponse();
 	    AnswerEntity answerEntity =
