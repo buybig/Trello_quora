@@ -7,7 +7,7 @@ Maven 3.6.3
 PostgreSQL DB
 #Project Setup:
 
- git clone https://github.com/itstayyab/Trello_quora.git
+
  cd Trello_Quora
  mvn clean -Psetup
  mvn clean install -PskipTest
