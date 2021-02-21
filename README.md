@@ -7,10 +7,12 @@ Maven 3.6.3
 PostgreSQL DB
 #Project Setup:
 
+Git Clone : https://github.com/buybig/Trello_quora.git
 
  cd Trello_Quora
  mvn clean -Psetup
  mvn clean install -PskipTest
+
 REST API endpoints - 1
 signup - "/user/signup"
 This endpoint is used to register a new user in the Quora Application.
