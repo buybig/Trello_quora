@@ -194,7 +194,7 @@ public class UserEntity implements Serializable {
 
   @Override
   public int hashCode() {
-    return new HashCodeBuilder().append(this).hashCode();
+    return new HashCodeBuilder().append(this.getId()).hashCode();
   }
 
   @Override
